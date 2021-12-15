@@ -1,0 +1,172 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "make -j4",
+            "args": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            }
+        },
+        {
+            "label": "make clean",
+            "type": "shell",
+            "command": "make clean",
+            "args": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            },
+            "problemMatcher": []
+        },
+        // GDB Server Start
+        {
+            "label": "make openocd",
+            "type": "shell",
+            "command": "make openocd",
+            "args": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            },
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".",
+                        "endsPattern": "."
+                    }
+                }
+            ]
+        },
+        {
+            "label": "make jlink",
+            "type": "shell",
+            "command": "make jlink",
+            "args": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            },
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".",
+                        "endsPattern": "."
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+/*
+    Useful tasks for Nordic Semiconductor to deal with a BLE softdevice
+
+{
+    "label": "make flash_softdevice",
+    "type": "shell",
+    "command": "make flash_softdevice",
+    "args": [],
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+    },
+    "group": "build",
+    "options": {
+        "cwd": "${workspaceFolder}/"
+    },
+    "problemMatcher": [],
+    "dependsOn": [
+        "make erase",
+    ]
+},
+{
+    "label": "make sdk_config",
+    "type": "shell",
+    "command": "make sdk_config",
+    "args": [],
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+    },
+    "group": "build",
+    "options": {
+        "cwd": "${workspaceFolder}/"
+    },
+    "problemMatcher": []
+},
+{
+    "label": "make erase",
+    "type": "shell",
+    "command": "make erase",
+    "args": [],
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+    },
+    "group": "build",
+    "options": {
+        "cwd": "${workspaceFolder}/"
+    },
+    "problemMatcher": []
+},
+
+*/

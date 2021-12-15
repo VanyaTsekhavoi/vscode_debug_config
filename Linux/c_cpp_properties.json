@@ -1,0 +1,19 @@
+{
+    "configurations": [
+	{
+            "name": "Linux",
+            "compilerPath": "/usr/bin/gcc",
+            "compilerArgs": [],
+            "includePath": [
+                "${workspaceFolder}/",
+                // For recursive check
+                "${workspaceFolder}/**",
+            ],
+            "defines": [],
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

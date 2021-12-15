@@ -1,0 +1,119 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "OpenOCD",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "serverpath": "path to OpenOCD or JLinkGDBServerCLExe or ST-Util",
+            "cwd": "${workspaceFolder}",
+            "executable": "path to the executable *.elf or *.out",
+            "gdbPath": "path to the GDB client (e.g. gdb-multiarch)",
+            "configFiles": [
+                "path to the device *.cfg"
+            ],
+            "svdFile": "Path to the *.svd file",
+            "interface": "swd",
+            "armToolchainPath": "path to the ARM compiler in your system",
+            "runToMain": true
+        },
+        {
+            "name": "J-Link",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "jlink",
+            "serverpath": "path to OpenOCD or JLinkGDBServerCLExe or ST-Util",
+            "cwd": "${workspaceRoot}",
+            "executable": "path to the executable *.elf or *.out",
+            "gdbPath": "path to the GDB client (e.g. gdb-multiarch)",
+            "configFiles": [
+                "path to the device *.cfg"
+            ],
+            "svdFile": "Path to the *.svd file",
+            "interface": "swd",
+            "armToolchainPath": "path to the ARM compiler in your system",
+            "runToMain": true,
+            "device": "This property is required for jlink",
+            "ipAddress": null,
+            "serialNumber": null
+        },
+        {
+            "name": "ST-Util",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "serverpath": "path to OpenOCD or JLinkGDBServerCLExe or ST-Util",
+            "cwd": "${workspaceRoot}",
+            "executable": "path to the executable *.elf or *.out",
+            "gdbPath": "path to the GDB client (e.g. gdb-multiarch)",
+            "configFiles": [
+                "path to the device *.cfg"
+            ],
+            "svdFile": "Path to the *.svd file",
+            "interface": "swd",
+            "armToolchainPath": "path to the ARM compiler in your system",
+            "runToMain": true,
+            "v1": false
+        },
+        {
+            /* General GDB Server (started manually from Makefile.gdb.mk) + Client */
+            // GDB Client
+            "name": "Pure GDB Client",
+            "request": "launch",
+            "type": "cppdbg",
+            "program": "path to the executable *.elf or *.out",
+            "targetArchitecture": "ARM",
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": true,
+            "logging": {
+                //"moduleLoad": true,
+                //"trace": true,
+                "engineLogging": true,
+                //"programOutput": true,
+                "exceptions": true,
+                //"traceResponse": true
+            },
+            "filterStderr": false,
+            "filterStdout": false,
+
+            "MIMode": "gdb",
+            "miDebuggerPath": "path to the GDB client (e.g. gdb-multiarch)",
+            /*
+            -se - specifying an executable;
+            -x  - specifying a gdb client script;
+            */
+            "miDebuggerArgs": "-se ${workspaceRoot}/<path to the executable .elf or *.out> -x ${workspaceFolder}/.vscode/<server name>.gdbinit",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+
+            // This line could prevent you from manual doing make <openocd/jlink> from a CLI
+            "preLaunchTask": "make <server name>",
+
+            // Platform specific,
+            "svdFile": "Path to the *.svd file"
+        }
+    ]
+}
+
+/*	
+    Useful notes
+
+    To choose an .svd file go to:
+    https: //www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html#cad-resources
+
+    Useful commands (Uart characters exchange):
+
+    rm -f /path/to/file; cat /dev/ttyACM0 > /path/to/file
+    stty -F /dev/ttyACM0 460800 raw -echo
+    echo -en "hello\r" > /dev/ttyACM0
+
+*/
