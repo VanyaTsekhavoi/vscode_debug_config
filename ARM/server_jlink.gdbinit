@@ -1,9 +1,9 @@
-#*************************************************************************#
-#                                                                         #
-#   Connect to the J-Link gdb server (opyional flash of an executable).   #
-#   See:    https://openocd.org/doc/html/GDB-and-OpenOCD.html             #
-#                                                                         #
-#*************************************************************************#
+#************************************************************************************#
+#                                                                         	         #
+#   Connect to the J-Link gdb server (opyional flash of an executable). See:	     #
+#   https://www.micro-semiconductor.nz/datasheet/d1-8.08.28-J-LINK-PLUS.pdf (p368)   #
+#                                                                         	         #
+#************************************************************************************#
 
 target extended-remote localhost:2331
 monitor speed adaptive

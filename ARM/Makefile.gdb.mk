@@ -19,7 +19,7 @@ kill_openocd:
 	-killall -9 openocd
 
 jlink: kill_openocd
-	JLinkGDBServerCLExe -if SWD -device $(DEVICE) -port 2331 -singlerun
+	JLinkGDBServerCLExe -if SWD -device $(DEVICE) -port 2331 -vd -ir -singlerun
 
 kill_jlink:
 	-killall -9 JLinkGDBServerCLExe
