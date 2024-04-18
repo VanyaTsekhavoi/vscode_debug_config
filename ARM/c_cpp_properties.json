@@ -11,9 +11,9 @@
             ],
             "defines": [
             ],
-            "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64"
+            "cStandard": "c23",
+            "cppStandard": "c++23",
+            "intelliSenseMode": "linux-gcc-arm"
         }
     ],
     "version": 4
