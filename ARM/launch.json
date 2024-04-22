@@ -11,15 +11,18 @@
             "servertype": "openocd",
             "serverpath": "path to OpenOCD or JLinkGDBServerCLExe or ST-Util",
             "cwd": "${workspaceFolder}",
-            "executable": "path to the executable *.elf or *.out",
-            "gdbPath": "path to the GDB client (e.g. gdb-multiarch)",
+            "executable": "build/${workspaceFolderBasename}.elf",
+            "gdbPath": "path to the GDB client (e.g. /usr/bin/gdb-multiarch)",
             "configFiles": [
-                "path to the device *.cfg"
+                "${workspaceFolder}/.vscode/target_microcontroller/bin/openocd_empty.cfg"
             ],
             "svdFile": "Path to the *.svd file",
             "interface": "swd",
             "armToolchainPath": "path to the ARM compiler in your system",
-            "runToMain": true
+            "runToEntryPoint": "main",
+            "targetProcessor": 0,
+            "rtos": "",
+            "showDevDebugOutput": "raw"
         },
         {
             "name": "J-Link",
